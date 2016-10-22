@@ -3,7 +3,7 @@ using FeedbackSystem.DataAccess.Interfaces;
 
 namespace FeedbackSystem.DataAccess.Entities
 {
-    class Feedback : IEntity
+    public class Feedback : IEntity
     {
         public int Id { get; set; }
         public DateTime Date{get;set;}

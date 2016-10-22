@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -14,6 +15,12 @@ namespace FeedbackSystem.DataAccess.Entities
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual ICollection<Feedback> Feedbacks{ get; set; }
+        
+        public ApplicationUser(){
+            Feedbacks = new List<Feedback>();
+        } 
     }
 
 }
