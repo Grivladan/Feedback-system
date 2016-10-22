@@ -56,9 +56,9 @@ namespace FeedbackSystem.WebHost
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "990981637678878",
+               appSecret: "fc8311a1306e72147ef341014e26f0ec");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
