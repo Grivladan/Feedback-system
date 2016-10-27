@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="like">
+    @using (Ajax.BeginForm("Index", "FeedBack", new AjaxOptions() { UpdateTargetId = "like" }))
+    {
+        <input type="submit" value="+1" />
+    }
+</div>
+

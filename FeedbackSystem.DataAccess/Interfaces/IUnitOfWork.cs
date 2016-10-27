@@ -8,7 +8,7 @@ namespace FeedbackSystem.DataAccess.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Feedback> Feedbacks { get;}
-        IRepository<FeedbackLike> FeedbackLikes { get;}
+        IRepository<Vote> Likes { get; }
         UserManager<ApplicationUser> UserManager { get; }
 
         void Save();

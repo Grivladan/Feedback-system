@@ -11,7 +11,6 @@ namespace FeedbackSystem.DataAccess.EF
         {}
 
         public DbSet<Feedback> Feedbacks { get; set; }
-        public DbSet<FeedbackLike> FeedbackLike { get; set; } 
 
         public static ApplicationDbContext Create()
         {

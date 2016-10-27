@@ -1,23 +1,21 @@
 ﻿using System;
 using FeedbackSystem.DataAccess.Interfaces;
-using System.Collections.Generic;
 
 namespace FeedbackSystem.DataAccess.Entities
 {
-    public class Feedback : IEntity
+    public class Vote : IEntity
     {
         public int Id { get; set; }
-        public DateTime Date{get;set;}
-        public string Text{get; set;}
-
         public string OwnerId { get; set; }
         public virtual ApplicationUser Owner { get; set; }
-        public virtual ICollection<Vote> Likes { get; set; }
+        public int FeedbackId { get; set; }
+        public virtual Feedback Feedback { get; set; } 
+        public DateTime Date { get; set; }
+        public bool isLike { get; set; }
 
-        public Feedback()
+        public Vote()
         {
             Date = DateTime.Now;
-            Likes = new List<Vote>();
         }
     }
 }
