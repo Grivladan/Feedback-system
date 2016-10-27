@@ -9,8 +9,7 @@ namespace FeedbackSystem.WebHost.Controllers
 {
     public class FeedBackController : Controller
     {
-
-        public ActionResult Index()
+        public ActionResult GetAll()
         {
             return View();
         }

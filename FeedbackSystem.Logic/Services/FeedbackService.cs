@@ -1,6 +1,11 @@
-﻿using FeedbackSystem.DataAccess.Entities;
+﻿using AutoMapper;
+using FeedbackSystem.DataAccess.Entities;
 using FeedbackSystem.DataAccess.Interfaces;
 using FeedbackSystem.Logic.Interfaces;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Shared.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace FeedbackSystem.Logic.Services
@@ -13,15 +18,21 @@ namespace FeedbackSystem.Logic.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void CreateFeedback(Feedback feedback)
+        public void CreateFeedback(FeedbackDto feedbackDto)
         {
-            
+            Feedback feedback = new Feedback
+            {
+                Text = feedbackDto.Text,
+                Date = DateTime.Now,
+                OwnerId = feedbackDto.OwnerId,
+                Owner = _unitOfWork.UserManager.FindById(feedbackDto.OwnerId)
+            };
         }
 
-        public IEnumerable<Feedback> GetAllFeedbacks()
+        public IEnumerable<FeedbackDto> GetAllFeedbacks()
         {
-            var feedbacks = _unitOfWork.Feedbacks.GetAll();
-            return feedbacks;
+            Mapper.Initialize(cfg => cfg.CreateMap<Feedback, FeedbackDto>());
+            return Mapper.Map<IEnumerable<Feedback>, List<FeedbackDto>>(_unitOfWork.Feedbacks.GetAll());
         }
 
         public void LikeFeedback(int id)
