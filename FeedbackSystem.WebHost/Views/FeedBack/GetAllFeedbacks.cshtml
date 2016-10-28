@@ -1,0 +1,18 @@
+﻿@model IEnumerable<FeedbackSystem.DataAccess.Entities.Feedback>
+
+@{
+    Layout = null;
+}
+
+<ul class="feedbacks">
+   @foreach(var feedback in Model)
+   {
+       <li>
+           <p>
+               <span class="username">@feedback.Owner.UserName</span><br />
+           </p>
+           <p> @feedback.Text</p>
+           <p class="no-pad-bottom date-posted">Posted @feedback.Date</p>
+       </li>
+   }
+</ul>
