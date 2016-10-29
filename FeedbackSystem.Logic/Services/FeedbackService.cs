@@ -27,6 +27,9 @@ namespace FeedbackSystem.Logic.Services
                 OwnerId = feedbackDto.OwnerId,
                 Owner = _unitOfWork.UserManager.FindById(feedbackDto.OwnerId)
             };
+
+            _unitOfWork.Feedbacks.Create(feedback);
+            _unitOfWork.Save();
         }
 
         public IEnumerable<FeedbackDto> GetAllFeedbacks()

@@ -17,8 +17,40 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
+input, select
+{
     max-width: 280px;
+}
+
+#main-column{
+    float:none;
+}
+
+.pad-bottom {
+    margin-bottom: 10px;
+}
+
+.new-feedback{
+    background-color: #c9e0fc;
+    padding: 15px 10px;
+    border-radius: 10px;
+}
+
+.username {
+    font-weight: bold;
+    color: #ff6a00;
+}
+
+.feedbacks li {
+    border-bottom: 1px solid #CCC;
+    padding: 15px 0;
+}
+
+.feedbacks li:first-child {
+    border-top: 1px solid #CCC;
+}
+
+.feedbacks li .date-posted {
+    font-size: 12px;
+    font-style: italic;
 }

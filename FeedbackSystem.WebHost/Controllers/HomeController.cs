@@ -11,7 +11,9 @@ namespace FeedbackSystem.WebHost.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Request.IsAuthenticated)
+                return RedirectToAction("Index", "FeedBack", null);
+            return RedirectToAction("Login", "Account", null);
         }
 
         public ActionResult About()

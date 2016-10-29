@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FeedbackSystem.DataAccess.Entities.Feedback>
+﻿@model IEnumerable<FeedbackSystem.WebHost.ViewModel.FeedbackViewModel>
 
 @{
     Layout = null;
@@ -12,7 +12,7 @@
                <span class="username">@feedback.Owner.UserName</span><br />
            </p>
            <p> @feedback.Text</p>
-           <p class="no-pad-bottom date-posted">Posted @feedback.Date</p>
+           <p class="date-posted">Posted @feedback.Date</p>
        </li>
    }
 </ul>

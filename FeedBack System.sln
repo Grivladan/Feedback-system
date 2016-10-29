@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackSystem.Logic", "Fee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackSystem.WebHost", "FeedbackSystem.WebHost\FeedbackSystem.WebHost.csproj", "{7E9471CC-ED80-4A36-87E8-088D81C8BF41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackSystem.Shared", "Shared\FeedbackSystem.Shared.csproj", "{4D3A8A3E-0762-4AEC-8883-4E79B2F91318}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{7E9471CC-ED80-4A36-87E8-088D81C8BF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E9471CC-ED80-4A36-87E8-088D81C8BF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E9471CC-ED80-4A36-87E8-088D81C8BF41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D3A8A3E-0762-4AEC-8883-4E79B2F91318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D3A8A3E-0762-4AEC-8883-4E79B2F91318}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D3A8A3E-0762-4AEC-8883-4E79B2F91318}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D3A8A3E-0762-4AEC-8883-4E79B2F91318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
