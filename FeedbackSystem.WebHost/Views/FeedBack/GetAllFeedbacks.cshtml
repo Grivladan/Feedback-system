@@ -7,7 +7,7 @@
 <ul class="feedbacks">
    @foreach(var feedback in Model)
    {
-       <li>
+       <li class="feedback-item">
            <p>
                <span class="username">@feedback.Owner.UserName</span><br />
            </p>
@@ -16,14 +16,16 @@
            <p>
                 @using (Html.BeginForm("Vote", "FeedBack"))
                 {
-                   <div class="row">
-                       <button type="submit" name ="voteValue" value ="true" class="btn btn-primary">
-                           <i class=" glyphicon glyphicon-chevron-up"></i> VoteUp
+                   <div class="voting-bar">
+                       <button type="submit" name ="voteValue" value ="true" class="btn btn-primary btn-sm vote-up">
+                           <i class=" glyphicon glyphicon-chevron-up"></i>
                        </button>
-                       <button type="submit" name ="voteValue" value ="false" class="btn btn-primary">
-                           <i class=" glyphicon glyphicon-chevron-down"></i> VoteDown
+                       <div class="rating">
+                           @feedback.Rating
+                       </div>
+                       <button type="submit" name ="voteValue" value ="false" class="btn btn-primary btn-sm vote-down">
+                           <i class=" glyphicon glyphicon-chevron-down"></i>
                        </button>
-                       @feedback.Rating
                        @Html.Hidden("feedbackId", @feedback.Id)
                    </div>
             }

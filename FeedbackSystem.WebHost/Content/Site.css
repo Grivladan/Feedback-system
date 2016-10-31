@@ -54,3 +54,21 @@ input, select
     font-size: 12px;
     font-style: italic;
 }
+
+.feedback-item{
+    position: relative;
+}
+
+.voting-bar{
+    position:absolute;
+    right: 0px;
+    top: 10px;
+}
+
+.rating, .vote-up, .vote-down{
+    display: block;
+}
+
+.rating{
+    text-align:center;
+}
