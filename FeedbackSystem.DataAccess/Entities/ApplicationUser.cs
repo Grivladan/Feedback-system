@@ -17,11 +17,11 @@ namespace FeedbackSystem.DataAccess.Entities
         }
 
         public virtual ICollection<Feedback> Feedbacks{ get; set; }
-        public virtual ICollection<Vote> Likes { get; set; }
+        public virtual ICollection<Vote> Votes { get; set; }
         
         public ApplicationUser(){
             Feedbacks = new List<Feedback>();
-            Likes = new List<Vote>();
+            Votes = new List<Vote>();
         } 
     }
 

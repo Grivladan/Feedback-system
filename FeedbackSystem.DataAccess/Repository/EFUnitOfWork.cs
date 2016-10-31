@@ -21,7 +21,7 @@ namespace FeedbackSystem.DataAccess.Repository
 
         private UserManager<ApplicationUser> _manager;
         private IRepository<Feedback> _feedbacksRepository;
-        private IRepository<Vote> _likesRepository;
+        private IRepository<Vote> _votesRepository;
 
         public UserManager<ApplicationUser> UserManager
         {
@@ -39,11 +39,11 @@ namespace FeedbackSystem.DataAccess.Repository
             }
         }
 
-        public IRepository<Vote> Likes
+        public IRepository<Vote> Votes
         {
             get
             {
-                return _likesRepository ?? (_likesRepository = _repositoryFactory.CreateRepository<Vote>(_context));
+                return _votesRepository ?? (_votesRepository = _repositoryFactory.CreateRepository<Vote>(_context));
             }
         }
 

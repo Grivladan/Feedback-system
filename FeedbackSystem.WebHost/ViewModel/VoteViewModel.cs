@@ -8,6 +8,6 @@ namespace FeedbackSystem.WebHost.ViewModel
         public string OwnerId { get; set; }
         public int FeedbackId { get; set; }
         public DateTime Date { get; set; }
-        public bool isLike { get; set; }
+        public bool Value { get; set; }
     }
 }

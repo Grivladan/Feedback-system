@@ -38,28 +38,25 @@ namespace FeedbackSystem.Logic.Services
             return Mapper.Map<IEnumerable<Feedback>, List<FeedbackDto>>(_unitOfWork.Feedbacks.GetAll());
         }
 
-        public void LikeFeedback(int id)
+        public void Vote(VoteDto voteDto)
         {
-            var feedback = _unitOfWork.Feedbacks.GetById(id);
-            Vote like = new Vote(){
-                FeedbackId = id,
-                Feedback = feedback, 
-                isLike = true
-            };
-            _unitOfWork.Likes.Create(like);
-            _unitOfWork.Save();
-        }
+            var feedback = _unitOfWork.Feedbacks.GetById(voteDto.FeedbackId);
 
-        public void DislikeFeedback(int id)
-        {
-            var feedback = _unitOfWork.Feedbacks.GetById(id);
-            Vote like = new Vote()
-            {
-                FeedbackId = id,
-                Feedback = feedback,
-                isLike = false
+            Vote vote = new Vote(){
+                Value = voteDto.Value,
+                FeedbackId = voteDto.FeedbackId,
+                Feedback = feedback, 
+                OwnerId = voteDto.OwnerId,
+                Owner = _unitOfWork.UserManager.FindById(voteDto.OwnerId)
             };
-            _unitOfWork.Likes.Create(like);
+
+            if (vote.Value == true)
+                feedback.Rating++;
+            else
+                feedback.Rating--;
+
+            _unitOfWork.Votes.Create(vote);
+            _unitOfWork.Feedbacks.Update(feedback);
             _unitOfWork.Save();
         }
 

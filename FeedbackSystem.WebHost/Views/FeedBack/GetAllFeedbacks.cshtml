@@ -13,6 +13,21 @@
            </p>
            <p> @feedback.Text</p>
            <p class="date-posted">Posted @feedback.Date</p>
+           <p>
+                @using (Html.BeginForm("Vote", "FeedBack"))
+                {
+                   <div class="row">
+                       <button type="submit" name ="voteValue" value ="true" class="btn btn-primary">
+                           <i class=" glyphicon glyphicon-chevron-up"></i> VoteUp
+                       </button>
+                       <button type="submit" name ="voteValue" value ="false" class="btn btn-primary">
+                           <i class=" glyphicon glyphicon-chevron-down"></i> VoteDown
+                       </button>
+                       @feedback.Rating
+                       @Html.Hidden("feedbackId", @feedback.Id)
+                   </div>
+            }
+           </p>
        </li>
    }
 </ul>

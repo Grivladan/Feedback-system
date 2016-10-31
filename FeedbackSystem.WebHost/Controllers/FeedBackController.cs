@@ -41,6 +41,24 @@ namespace FeedbackSystem.WebHost.Controllers
             var feedbackDto = Mapper.Map<FeedbackViewModel, FeedbackDto>(feedback);
             feedbackDto.OwnerId = User.Identity.GetUserId();
             _feedbackService.CreateFeedback(feedbackDto);
+            ModelState.Clear();
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Vote(bool voteValue, int feedbackId)
+        {
+            VoteViewModel voteViewModel = new VoteViewModel
+            {
+                Value = voteValue,
+                FeedbackId = feedbackId,
+                OwnerId = User.Identity.GetUserId()
+            };
+
+            Mapper.Initialize(cfg => cfg.CreateMap<VoteViewModel, VoteDto>());
+            var voteDto = Mapper.Map<VoteViewModel, VoteDto>(voteViewModel);
+            _feedbackService.Vote(voteDto);
+
             return View("Index");
         }
     }

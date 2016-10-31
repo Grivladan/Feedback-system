@@ -11,7 +11,7 @@ namespace FeedbackSystem.DataAccess.Entities
         public int FeedbackId { get; set; }
         public virtual Feedback Feedback { get; set; } 
         public DateTime Date { get; set; }
-        public bool isLike { get; set; }
+        public bool Value { get; set; }
 
         public Vote()
         {

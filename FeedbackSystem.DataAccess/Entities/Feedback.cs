@@ -9,6 +9,7 @@ namespace FeedbackSystem.DataAccess.Entities
         public int Id { get; set; }
         public DateTime Date{get;set;}
         public string Text{get; set;}
+        public int Rating { get; set; }
 
         public string OwnerId { get; set; }
         public virtual ApplicationUser Owner { get; set; }
