@@ -1,7 +1,7 @@
 ﻿@model FeedbackSystem.WebHost.ViewModel.FeedbackViewModel
 
 <div id="vote-bar-@Model.Id">
-    @using (Ajax.BeginForm("Vote", "FeedBack", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "voting-bar-" + Model.Id, InsertionMode = InsertionMode.Replace }))
+    @using (Ajax.BeginForm("Vote", "FeedBack", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "vote-bar-" + Model.Id, InsertionMode = InsertionMode.Replace }))
     {
         <div class="vote-bar-form">
             <button type="submit" name="voteValue" value="true" class="btn btn-primary btn-sm vote-up">

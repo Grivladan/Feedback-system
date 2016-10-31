@@ -46,12 +46,12 @@ namespace FeedbackSystem.WebHost.Controllers
         }
 
         [HttpPost]
-        public ActionResult Vote(bool voteValue, int feedbackId)
+        public PartialViewResult Vote(bool voteValue, int feedbackId)
         {
             VoteViewModel voteViewModel = new VoteViewModel
             {
                 Value = voteValue,
-                FeedbackId = feedbackViewId,
+                FeedbackId = feedbackId,
                 OwnerId = User.Identity.GetUserId()
             };
 
