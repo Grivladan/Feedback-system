@@ -51,7 +51,7 @@ namespace FeedbackSystem.WebHost.Controllers
             VoteViewModel voteViewModel = new VoteViewModel
             {
                 Value = voteValue,
-                FeedbackId = feedbackId,
+                FeedbackId = feedbackViewId,
                 OwnerId = User.Identity.GetUserId()
             };
 
@@ -59,7 +59,14 @@ namespace FeedbackSystem.WebHost.Controllers
             var voteDto = Mapper.Map<VoteViewModel, VoteDto>(voteViewModel);
             _feedbackService.Vote(voteDto);
 
-            return View("Index");
+            var feedbackDto = _feedbackService.GetFeedbackById(feedbackId);
+
+            var feedbackViewModel = new FeedbackViewModel{
+                Id = feedbackId,
+                Rating = feedbackDto.Rating
+            };
+
+            return PartialView("VoteBar", feedbackViewModel);
         }
     }
 }

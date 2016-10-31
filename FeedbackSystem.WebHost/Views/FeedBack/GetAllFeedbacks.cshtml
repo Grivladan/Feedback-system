@@ -14,22 +14,9 @@
            <p> @feedback.Text</p>
            <p class="date-posted">Posted @feedback.Date</p>
            <p>
-                @using (Html.BeginForm("Vote", "FeedBack"))
-                {
-                   <div class="voting-bar">
-                       <button type="submit" name ="voteValue" value ="true" class="btn btn-primary btn-sm vote-up">
-                           <i class=" glyphicon glyphicon-chevron-up"></i>
-                       </button>
-                       <div class="rating">
-                           @feedback.Rating
-                       </div>
-                       <button type="submit" name ="voteValue" value ="false" class="btn btn-primary btn-sm vote-down">
-                           <i class=" glyphicon glyphicon-chevron-down"></i>
-                       </button>
-                       @Html.Hidden("feedbackId", @feedback.Id)
-                   </div>
-            }
+               @Html.Partial("VoteBar", feedback)
            </p>
        </li>
    }
 </ul>
+

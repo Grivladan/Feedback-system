@@ -1,0 +1,21 @@
+﻿@model FeedbackSystem.WebHost.ViewModel.FeedbackViewModel
+
+<div id="vote-bar-@Model.Id">
+    @using (Ajax.BeginForm("Vote", "FeedBack", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "voting-bar-" + Model.Id, InsertionMode = InsertionMode.Replace }))
+    {
+        <div class="vote-bar-form">
+            <button type="submit" name="voteValue" value="true" class="btn btn-primary btn-sm vote-up">
+                <i class=" glyphicon glyphicon-chevron-up"></i>
+            </button>
+            <div class="rating">
+                @Html.DisplayTextFor(m => m.Rating)
+            </div>
+            <button type="submit" name="voteValue" value="false" class="btn btn-primary btn-sm vote-down">
+                <i class=" glyphicon glyphicon-chevron-down"></i>
+            </button>
+            @Html.Hidden("feedbackId", @Model.Id)
+        </div>
+    }
+</div>
+
+

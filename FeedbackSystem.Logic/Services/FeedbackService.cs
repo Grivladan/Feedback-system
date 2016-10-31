@@ -64,5 +64,12 @@ namespace FeedbackSystem.Logic.Services
         {
            _unitOfWork.Dispose();
         }
+
+
+        public FeedbackDto GetFeedbackById(int id)
+        {
+            Mapper.Initialize(cfg => cfg.CreateMap<Feedback, FeedbackDto>());
+            return Mapper.Map<Feedback, FeedbackDto>(_unitOfWork.Feedbacks.GetById(id));
+        }
     }
 }

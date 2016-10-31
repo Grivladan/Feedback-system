@@ -8,6 +8,7 @@ namespace FeedbackSystem.Logic.Interfaces
     {
         void CreateFeedback(FeedbackDto feedbackDto);
         IEnumerable<FeedbackDto> GetAllFeedbacks();
+        FeedbackDto GetFeedbackById(int id);
         void Vote(VoteDto voteDto);
 
         void Dispose();
