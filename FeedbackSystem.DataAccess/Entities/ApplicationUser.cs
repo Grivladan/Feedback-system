@@ -18,10 +18,12 @@ namespace FeedbackSystem.DataAccess.Entities
 
         public virtual ICollection<Feedback> Feedbacks{ get; set; }
         public virtual ICollection<Vote> Votes { get; set; }
+        public int VotesCount { get; set; }
         
         public ApplicationUser(){
             Feedbacks = new List<Feedback>();
             Votes = new List<Vote>();
+            VotesCount = 10;
         } 
     }
 

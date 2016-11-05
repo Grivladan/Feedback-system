@@ -38,8 +38,14 @@ namespace FeedbackSystem.Logic.Services
             return Mapper.Map<IEnumerable<Feedback>, List<FeedbackDto>>(_unitOfWork.Feedbacks.GetAll());
         }
 
-        public void Vote(VoteDto voteDto)
+        public bool Vote(VoteDto voteDto)
         {
+            var voteOwner = _unitOfWork.UserManager.FindById(voteDto.OwnerId);
+            if (voteOwner.VotesCount <= 0)
+                return false;
+            voteOwner.VotesCount -= 1;
+            _unitOfWork.UserManager.Update(voteOwner);
+
             var feedback = _unitOfWork.Feedbacks.GetById(voteDto.FeedbackId);
 
             Vote vote = new Vote(){
@@ -58,6 +64,8 @@ namespace FeedbackSystem.Logic.Services
             _unitOfWork.Votes.Create(vote);
             _unitOfWork.Feedbacks.Update(feedback);
             _unitOfWork.Save();
+
+            return true;
         }
 
         public void Dispose()

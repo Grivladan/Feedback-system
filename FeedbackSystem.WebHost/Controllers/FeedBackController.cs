@@ -46,7 +46,7 @@ namespace FeedbackSystem.WebHost.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult Vote(bool voteValue, int feedbackId)
+        public ActionResult Vote(bool voteValue, int feedbackId)
         {
             VoteViewModel voteViewModel = new VoteViewModel
             {
@@ -57,16 +57,23 @@ namespace FeedbackSystem.WebHost.Controllers
 
             Mapper.Initialize(cfg => cfg.CreateMap<VoteViewModel, VoteDto>());
             var voteDto = Mapper.Map<VoteViewModel, VoteDto>(voteViewModel);
-            _feedbackService.Vote(voteDto);
+            
+            bool successVote = _feedbackService.Vote(voteDto);
+            ViewBag.successVote = successVote;
 
             var feedbackDto = _feedbackService.GetFeedbackById(feedbackId);
 
             var feedbackViewModel = new FeedbackViewModel{
                 Id = feedbackId,
-                Rating = feedbackDto.Rating
+                Text = feedbackDto.Text,
+                Date = feedbackDto.Date,
+                Rating = feedbackDto.Rating,
+                OwnerId = feedbackDto.OwnerId,
+                Owner = feedbackDto.Owner
             };
 
             return PartialView("VoteBar", feedbackViewModel);
         }
+
     }
 }

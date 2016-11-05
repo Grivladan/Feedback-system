@@ -25,7 +25,11 @@ namespace FeedbackSystem.WebHost
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css", "~/Content/toastr.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                   "~/Scripts/toastr.js", "~/Scripts/respond.js"));
+
         }
     }
 }

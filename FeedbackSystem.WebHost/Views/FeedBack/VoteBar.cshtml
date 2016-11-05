@@ -4,13 +4,13 @@
     @using (Ajax.BeginForm("Vote", "FeedBack", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "vote-bar-" + Model.Id, InsertionMode = InsertionMode.Replace }))
     {
         <div class="vote-bar-form">
-            <button type="submit" name="voteValue" value="true" class="btn btn-primary btn-sm vote-up">
+            <button type="submit" name="voteValue" value="true" class="btn btn-primary btn-sm vote-up-@Model.Id">
                 <i class=" glyphicon glyphicon-chevron-up"></i>
             </button>
             <div class="rating">
                 @Html.DisplayTextFor(m => m.Rating)
             </div>
-            <button type="submit" name="voteValue" value="false" class="btn btn-primary btn-sm vote-down">
+            <button type="submit" name="voteValue" value="false" class="btn btn-primary btn-sm vote-down-@Model.Id">
                 <i class=" glyphicon glyphicon-chevron-down"></i>
             </button>
             @Html.Hidden("feedbackId", @Model.Id)
@@ -18,4 +18,29 @@
     }
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.vote-up-@Model.Id').click(function () {
 
+            toastr.options = {
+                "debug": false,
+                "positionClass": "toast-bottom-full-width",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": 5000,
+                "extendedTimeOut": 1000
+            }
+
+            var successVote = '@(ViewBag.successVote)'
+            if(successVote == true)
+            {
+                toastr.success("Thanks for feedback! Your vote was successfully added.");
+            }
+            else
+            { 
+                toastr.info("Sorry! You don't have available votes");
+            }
+        });
+    });
+</script>
